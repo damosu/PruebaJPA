@@ -1,5 +1,2 @@
-//JPA
-include "mybank-db-jpa"
-
 //SpringBoot application (APIs)
 include "mybank-app"

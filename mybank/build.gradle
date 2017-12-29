@@ -2,6 +2,8 @@ buildscript {
     ext {
         versions = [
                 "springBoot": "1.5.9.RELEASE",
+                "spring": "5.0.2.RELEASE",
+                "springCrypto": "5.0.0.RELEASE",
                 "hibernate": "5.2.3.Final",
                 "mockito": "1.10.19",
                 "hamcrest": "1.3",
