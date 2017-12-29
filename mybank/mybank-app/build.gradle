@@ -8,4 +8,5 @@ dependencies {
 	compile "com.fasterxml.jackson.datatype:jackson-datatype-guava"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate5"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    compile "org.flywaydb:flyway-core:${versions.flywaydb}"
 }
