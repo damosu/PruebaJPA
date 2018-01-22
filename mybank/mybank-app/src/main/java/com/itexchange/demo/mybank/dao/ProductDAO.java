@@ -19,7 +19,11 @@ public class ProductDAO extends BaseDAO {
 		entityManager.persist(product);
 		return product;
 	}
-
+	
+	public Product findByPrimaryKey(Integer id) {
+		return entityManager.find(Product.class, id);
+	}
+	
 	public List<Product> findAll() {
 		TypedQuery<Product> query = entityManager.createNamedQuery("Product.findAll", Product.class);
 		return query.getResultList();
