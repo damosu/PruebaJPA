@@ -3,6 +3,7 @@ package com.itexchange.demo.mybank.dao;
 import java.util.List;
 
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ public class CustomerDAO extends BaseDAO {
 		entityManager.merge(customer);
 		return customer;
 	}
-	
+
 	public Customer findByCustomerId(String customerId) throws ObjectNotFoundException {
 		String strQuery = "SELECT c FROM Customer c WHERE c.customerId = :customerId";
 
@@ -54,8 +55,16 @@ public class CustomerDAO extends BaseDAO {
 		entityManager.merge(customer);
 		return customerInfo;
 	}
-	
+
 	public List<CustomerNames> findCustomerNames() {
 		return entityManager.createNamedQuery("find_cust_name_and_surname_dto").getResultList();
+	}
+
+	public List<Customer> findCustomersWithMoreThan(Long numberOfProducts) {
+		String strQuery = "SELECT c FROM Customer c WHERE (SELECT count(cp) FROM CustomerProduct cp WHERE cp.customer = c) >= :numberOfProducts";
+		Query query = entityManager.createQuery(strQuery);
+		query.setParameter("numberOfProducts", numberOfProducts);
+		List<Customer> customers = query.getResultList();
+		return customers;
 	}
 }
