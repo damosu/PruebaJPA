@@ -6,10 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(of = { "id" })
 @MappedSuperclass
+@Data
 public abstract class SpecialCustomer {
 	
 	@Id

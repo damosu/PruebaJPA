@@ -4,21 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@Builder
+@Data
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
 @Entity
 @Table(name = "employee_customer")
 public class EmployeeCustomer extends SpecialCustomer {
-	
+
 	@Column(name = "employee_id")
 	private String employeeId;
-	
+
 	private String surname;
-	
+
 	private String mobile;
 }
