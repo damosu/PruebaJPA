@@ -3,7 +3,6 @@ package com.itexchange.demo.mybank.dao;
 import java.util.List;
 
 import javax.persistence.NoResultException;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -60,13 +59,13 @@ public class CustomerDAO extends BaseDAO {
 	}
 
 	public List<CustomerNames> findCustomerNames() {
-		return entityManager.createNamedQuery("find_cust_name_and_surname_dto").getResultList();
+		return entityManager.createNamedQuery("find_cust_name_and_surname_dto", CustomerNames.class).getResultList();
 	}
 
 	public List<Customer> findCustomersWithMoreThan(Long numberOfProducts) {
 		String strQuery = "SELECT c FROM Customer c WHERE "
 				+ "(SELECT count(cp) FROM CustomerProduct cp WHERE cp.customer = c) >= :numberOfProducts";
-		Query query = entityManager.createQuery(strQuery);
+		TypedQuery<Customer> query = entityManager.createQuery(strQuery, Customer.class);
 		query.setParameter("numberOfProducts", numberOfProducts);
 		List<Customer> customers = query.getResultList();
 		return customers;

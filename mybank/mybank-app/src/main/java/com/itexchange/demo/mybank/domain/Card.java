@@ -1,16 +1,15 @@
 package com.itexchange.demo.mybank.domain;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.InheritanceType.JOINED;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,9 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "branch_type")
-public class Branch implements Serializable {
+@Inheritance(strategy = JOINED)
+public abstract class Card implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,4 +37,10 @@ public class Branch implements Serializable {
 	protected String status;
 
 	protected Timestamp createdDate;
+
+	protected String cardNumber;
+
+	protected String cardImageUrl;
+
+	protected Timestamp dueDate;
 }
