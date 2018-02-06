@@ -12,8 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
+import javax.validation.GroupSequence;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.itexchange.demo.mybank.domain.dto.CustomerNames;
+import com.itexchange.demo.mybank.validation.GroupCustomerContactInfo;
+import com.itexchange.demo.mybank.validation.GroupCustomerNames;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,25 +51,32 @@ import lombok.ToString;
 		}
 	)
 )
+//@GroupSequence({ Customer.class, GroupCustomerNames.class, GroupCustomerContactInfo.class })
 public class Customer implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	private Integer id;
-
+	
+	@NotNull(groups = GroupCustomerNames.class)
 	private String name;
 
+	@NotNull(groups = GroupCustomerNames.class)
 	private String surname;
 
+	@NotNull
 	@Column(name = "customer_id")
 	private String customerId;
 
+	@NotNull(groups = GroupCustomerContactInfo.class)
+	@Pattern(regexp = "^(.+)@(.+)$")
 	private String email;
 
+	@NotNull(groups = GroupCustomerContactInfo.class)
 	private String mobile;
 
+	@NotNull(groups = GroupCustomerContactInfo.class)
 	private String phone;
 
 	private String password;
