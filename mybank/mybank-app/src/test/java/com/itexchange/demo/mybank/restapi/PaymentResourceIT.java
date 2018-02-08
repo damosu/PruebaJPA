@@ -50,6 +50,20 @@ public class PaymentResourceIT {
 				"	\"type\": 3\r\n" + 
 				"}";
 
+		/*
+		 Expected response:
+		 -----------------------
+		 {
+			"status": "APPROVED",
+			"transaction_number": "0000",
+			"date": "2018-02-08 10:00:00",
+			"customer_id": "3012345",
+			"product_number": "1000000003",
+			"channel": "POS"
+		}
+		 -----------------------
+		*/
+		
 		String result = given()
 							.contentType(DEFAULT_CONTENT_TYPE)
 							.body(json)
@@ -79,6 +93,19 @@ public class PaymentResourceIT {
 				"	\"type\": 1\r\n" + 
 				"}";
 		
+		/*
+		Expected response:
+		-----------------------
+		{
+			"status": "APPROVED",
+			"transaction_number": "0000",
+			"date": "2018-02-08 10:00:00",
+			"customer_id": "3012345",
+			"product_number": "1000000003",
+			"channel": "ATM"
+		}
+		 -----------------------
+		*/
 		String result = given()
 				.contentType(DEFAULT_CONTENT_TYPE)
 				.body(json)

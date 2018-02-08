@@ -45,6 +45,28 @@ public class LoanResourceIT {
 		final Map<String, String> params = new HashMap<>();
 		params.put("customerId", "3012345");
 		
+		/**
+		 Expected response:
+		 ----------------------
+		 [
+			{
+				"type": "HOME",
+				"id": 0,
+				"fire_insurance_company": "company",
+				"fire_insurance_id": "0",
+				"status": "ACTIVE"
+			},
+			{
+				"type": "CAR",
+				"id": 0,
+				"life_insurance_company": "company",
+				"life_insurance_id": "0",
+				"status": "ACTIVE"
+			}
+		]
+		-------------------------
+		*/
+		
 		given()
 		.when()
 			.get(ACTIVE_LOAN_URL, params)
