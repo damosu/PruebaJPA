@@ -63,7 +63,6 @@ public class PaymentResourceIT {
 		}
 		 -----------------------
 		*/
-		
 		String result = given()
 							.contentType(DEFAULT_CONTENT_TYPE)
 							.body(json)
@@ -123,5 +122,4 @@ public class PaymentResourceIT {
 		assertThat(result).contains("\"channel\": \"ATM\"");
 		assertThat(result).contains("\"date\"");
 	}
-	
 }
