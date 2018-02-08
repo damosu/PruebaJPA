@@ -3,15 +3,11 @@ package com.itexchange.demo.mybank.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Component;
-
 import com.itexchange.demo.mybank.domain.Product;
 
-@Component
 public class ProductDAO extends BaseDAO {
 
 	@Transactional

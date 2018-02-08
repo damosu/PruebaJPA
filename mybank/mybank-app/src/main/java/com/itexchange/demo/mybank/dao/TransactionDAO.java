@@ -4,11 +4,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.springframework.stereotype.Component;
-
 import com.itexchange.demo.mybank.domain.Transaction;
 
-@Component
 public class TransactionDAO extends BaseDAO {
 
 	public Transaction findByTransactionNumber(Integer trxNumber) {
@@ -27,6 +24,4 @@ public class TransactionDAO extends BaseDAO {
 		List<Transaction> result = query.getResultList();
 		return result;
 	}
-	
-	
 }
