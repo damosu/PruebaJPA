@@ -24,13 +24,13 @@ public class Main {
 
 			// Creating new customer
 			Customer newCustomer = new Customer();
-			newCustomer.setCustomerId("7012345");
-			newCustomer.setEmail("brian.may@queenonline.com");
-			newCustomer.setMobile("3119990044");
-			newCustomer.setName("Brian");
-			newCustomer.setSurname("May");
-			newCustomer.setPhone("+5749990044");
-			newCustomer.setPassword("secret");
+			newCustomer.setCustomerId("12345");
+			newCustomer.setEmail("daniel.molina@quipux.com");
+			newCustomer.setMobile("3206621982");
+			newCustomer.setName("Daniel");
+			newCustomer.setSurname("Molina");
+			newCustomer.setPhone("+575620115");
+			newCustomer.setPassword("admin");
 
 			Customer saved = customerDAO.save(newCustomer);
 			System.out.println("New customer saved. " + saved);
