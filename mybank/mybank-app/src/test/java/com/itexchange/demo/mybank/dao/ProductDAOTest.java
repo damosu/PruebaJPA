@@ -43,4 +43,20 @@ public class ProductDAOTest {
 		assertThat(products).isNotEmpty();
 		assertThat(products.get(0).getName().trim()).isEqualTo("Savings Account");
 	}
+	
+	@Test
+	public void testFindByName() {
+		String productName = "Savings Account";
+		Product product = productDAO.findByName(productName);
+		assertThat(product).isNotNull();
+		assertThat(product.getDescription()).isEqualTo("Savings Account");
+		assertThat(product.getStatus()).isEqualTo("ACTIVE");
+	}
+	
+	@Test
+	public void testSave() {
+		Product product = Product.builder().id(21).name("test name").description("Test").status("ACTIVE").build();
+		productDAO.save(product);
+	}
+	
 }

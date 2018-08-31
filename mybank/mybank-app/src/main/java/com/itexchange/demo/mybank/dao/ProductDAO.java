@@ -29,8 +29,9 @@ public class ProductDAO extends BaseDAO {
 	}
 	
 	public void delete(Integer id) {
+		String deleteQuery = "DELETE FROM p WHERE p.id = :id";
 		try {
-			String strQuery = "DELETE FROM p WHERE p.id = :id";
+			entityManager.createQuery(deleteQuery).setParameter("id", id).getSingleResult();
 		} catch (NoResultException e) {
 			throw new ObjectNotFoundException("Product doesn't exist.");
 		}
