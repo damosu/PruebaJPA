@@ -1,5 +1,8 @@
 package com.itexchange.demo.mybank.dao;
 
+import static org.mockito.Matchers.anyLong;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -28,7 +31,7 @@ public class CustomerDAO extends BaseDAO {
 		String strQuery = "SELECT c FROM Customer c WHERE c.customerId = :customerId";
 
 		try {
-			log.info(">>> Entity Manager" + entityManager);
+			//log.info(">>> Entity Manager" + entityManager);
 			Customer customer = (Customer) entityManager.createQuery(strQuery).setParameter("customerId", customerId)
 					.getSingleResult();
 			return customer;
